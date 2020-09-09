@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import "./header.css";
 
-import Login from "../../Containers/login/Login";
 import SignUp from "../../Containers/SignUp/SignUp";
 
 import Button from "../../Components/Button/Button";
@@ -13,20 +12,19 @@ const Header = () => {
 
   return (
     <div className="header">
-      <text className="text">Casos de Covid 19 no Mundo</text>
+      <div className="text">Casos de Covid 19 no Mundo</div>
       <div>
         <Button
           text="Cadastrar"
-          typeButton="btnRed"
+          typebtn="btnRed"
           onClick={() => setShowSignUp(!showSignUp)}
         />
         <Button
           text="Login"
-          typeButton="btnGreen"
+          typebtn="btnGreen"
           onClick={() => setShowLogin(!showLogin)}
         />
       </div>
-      {showLogin && <Login></Login>}
       {showSignUp && <SignUp></SignUp>}
     </div>
   );
