@@ -1,0 +1,19 @@
+.btnRed {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 0px;
+    margin: 5px;
+    background-color: rgb(240, 106, 106);
+    color: white;
+}
+
+.btnGreen {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 0px;
+    margin: 5px;
+    background-color: rgb(87, 158, 87);
+    color: white;
+}
