@@ -2,30 +2,24 @@ import React, { useState } from "react";
 
 import "./header.css";
 
-import SignUp from "../../Containers/SignUp/SignUp";
+import DisplayComponents from "../../Components/VerifyLogin/VerifyLogin";
 
 import Button from "../../Components/Button/Button";
 
 const Header = () => {
-  const [showLogin, setShowLogin] = useState(false);
-  const [showSignUp, setShowSignUp] = useState(false);
+  let isLogged = false;
+  if (localStorage.getItem("@covid19/token") != undefined) {
+    isLogged = true;
+  }
+
+  console.log("ta logado? ->", isLogged);
 
   return (
     <div className="header">
       <div className="text">Casos de Covid 19 no Mundo</div>
       <div>
-        <Button
-          text="Cadastrar"
-          typebtn="btnRed"
-          onClick={() => setShowSignUp(!showSignUp)}
-        />
-        <Button
-          text="Login"
-          typebtn="btnGreen"
-          onClick={() => setShowLogin(!showLogin)}
-        />
+        <DisplayComponents logged={isLogged}></DisplayComponents>
       </div>
-      {showSignUp && <SignUp></SignUp>}
     </div>
   );
 };
