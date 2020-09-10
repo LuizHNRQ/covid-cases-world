@@ -17,3 +17,13 @@
     background-color: rgb(87, 158, 87);
     color: white;
 }
+
+.btnGrey {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 0px;
+    margin: 5px;
+    background-color: rgb(158, 158, 158);
+    color: white;
+}
