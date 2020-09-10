@@ -8,7 +8,6 @@ import Button from "../../Components/Button/Button";
 const VerifyLogin = (props) => {
   const [showLogin, setShowLogin] = useState(true);
   const [showSignUp, setShowSignUp] = useState(false);
-  const [showBtnLogout, setShowBtnLogout] = useState(true);
 
   function logout() {
     localStorage.removeItem("@covid19/token");
@@ -21,14 +20,26 @@ const VerifyLogin = (props) => {
   if (props.logged === false) {
     return (
       <div>
-        <Button
-          text="Cadastrar"
-          typebtn="btnRed"
-          onClick={() => {
-            setShowLogin(false);
-            setShowSignUp(true);
-          }}
-        ></Button>
+        {showLogin && (
+          <Button
+            text="Cadastrar"
+            typebtn="btnRed"
+            onClick={() => {
+              setShowLogin(false);
+              setShowSignUp(true);
+            }}
+          ></Button>
+        )}
+        {showSignUp && (
+          <Button
+            text="Login"
+            typebtn="btnGreen"
+            onClick={() => {
+              setShowLogin(true);
+              setShowSignUp(false);
+            }}
+          ></Button>
+        )}
         {showLogin && <Login></Login>}
         {showSignUp && <SignUp></SignUp>}
       </div>
