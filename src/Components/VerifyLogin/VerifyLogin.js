@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./VerifyLogin.css";
+
 import SignUp from "../../Containers/SignUp/SignUp";
 import Login from "../../Containers/login/Login";
 
@@ -15,11 +17,15 @@ const VerifyLogin = (props) => {
   }
 
   if (props.logged) {
-    return <Button text="Logout" typebtn="btnRed" onClick={logout}></Button>;
+    return (
+      <div className="logout">
+        <Button text="Logout" typebtn="btnRed" onClick={logout}></Button>
+      </div>
+    );
   }
   if (props.logged === false) {
     return (
-      <div>
+      <div className="display">
         {showLogin && (
           <Button
             text="Cadastrar"

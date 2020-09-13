@@ -6,10 +6,12 @@ import axios from "axios";
 import Input from "../../Components/Input/Input";
 
 const Login = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
 
-  const efetuarLogin = (user) => {
+  const efetuarLogin = () => {
     axios
       .post("https://reqres.in/api/login", user)
       .then(function (response) {
@@ -25,30 +27,21 @@ const Login = (props) => {
       });
   };
 
-  const submitCredential = () => {
-    const userCredential = {
-      email: email,
-      password: password,
-    };
-    efetuarLogin(userCredential);
-    console.log(userCredential);
-  };
-
   return (
     <div className="login">
       <Input
         hint="Digite seu email..."
         type="email"
         label="email"
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setUser({ ...user, email: e.target.value })}
       ></Input>
       <Input
         hint="Senha..."
         type="password"
         label="Senha"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => setUser({ ...user, password: e.target.value })}
       ></Input>
-      <Input type="submit" value="Acessar" onClick={submitCredential}></Input>
+      <Input type="submit" value="Acessar" onClick={efetuarLogin}></Input>
     </div>
   );
 };

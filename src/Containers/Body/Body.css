@@ -1,5 +1,6 @@
 .container {
-    height: 800px;
+    display: flex;
+    justify-content: center;
     background-color: rgb(130, 140, 155);
 }
 
@@ -11,3 +12,25 @@
     background-color: rgb(223, 213, 217);
     margin: 20px;
 }
+
+.fixInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+
+}
+
+.search {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: lightslategray;
+}
+
+.dynamicInfo {
+    display: flex;
+    justify-content: center;
+}
+
+.center {}

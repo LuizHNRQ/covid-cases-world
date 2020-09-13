@@ -5,15 +5,17 @@ import "./SignUp.css";
 import Input from "../../Components/Input/Input";
 
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  });
 
-  const efetuarCadastro = (user) => {
+  const efetuarCadastro = () => {
     axios
       .post("https://reqres.in/api/register", user)
       .then(function (response) {
-        if ((response.status = 200)) {
+        if ((response.status = 200) && user.password === user.passwordConfirm) {
           window.location.reload();
         }
       })
@@ -22,39 +24,27 @@ const SignUp = () => {
       });
   };
 
-  const submitCredential = () => {
-    if (password === passwordConfirm) {
-      const userCredential = {
-        email: email,
-        password: password,
-      };
-      efetuarCadastro(userCredential);
-    } else {
-      console.log("implementar erro de validação");
-    }
-  };
-
   return (
     <div className="signup">
       <Input
         hint="Digite seu email..."
         type="email"
         label="email"
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setUser({ ...user, email: e.target.value })}
       ></Input>
       <Input
         hint="Senha..."
         type="password"
         label="Senha"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => setUser({ ...user, password: e.target.value })}
       ></Input>
       <Input
         hint="Confirme a Senha..."
         type="password"
         label="Senha"
-        onChange={(e) => setPasswordConfirm(e.target.value)}
+        onChange={(e) => setUser({ ...user, passwordConfirm: e.target.value })}
       ></Input>
-      <Input type="submit" value="Cadastrar" onClick={submitCredential}></Input>
+      <Input type="submit" value="Cadastrar" onClick={efetuarCadastro}></Input>
     </div>
   );
 };
