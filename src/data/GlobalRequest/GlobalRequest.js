@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import "../../data/DataDisplay.css";
+import { Display, DataGreen, DataRed } from "../../styles";
 
 const GlobalRequest = (props) => {
   const [dataTotal, setDataTotal] = useState({
@@ -28,12 +28,18 @@ const GlobalRequest = (props) => {
   return (
     <div {...props}>
       <div>
-        <div className="caseDisplay">
+        <Display>
           <p>Casos Globais</p>
           <p>Casos Confirmados: {dataTotal.totalConfirm}</p>
-          <p>Pacientes Recuperados: {dataTotal.totalRecover}</p>
-          <p>Mortes: {dataTotal.totalDeath}</p>
-        </div>
+          <p>
+            <DataGreen>Pacientes Recuperados: </DataGreen>
+            {dataTotal.totalRecover}
+          </p>
+          <p>
+            <DataRed>Mortes: </DataRed>
+            {dataTotal.totalDeath}
+          </p>
+        </Display>
       </div>
     </div>
   );

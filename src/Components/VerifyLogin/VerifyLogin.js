@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
-import "./VerifyLogin.css";
+import { DivDisplay, DivLogout } from "../../styles";
 
 import SignUp from "../../Containers/SignUp/SignUp";
 import Login from "../../Containers/login/Login";
-
 import Button from "../../Components/Button/Button";
 
 const VerifyLogin = (props) => {
@@ -18,14 +17,14 @@ const VerifyLogin = (props) => {
 
   if (props.logged) {
     return (
-      <div className="logout">
+      <DivLogout>
         <Button text="Logout" typebtn="btnRed" onClick={logout}></Button>
-      </div>
+      </DivLogout>
     );
   }
   if (props.logged === false) {
     return (
-      <div className="display">
+      <DivDisplay>
         {showLogin && (
           <Button
             text="Cadastrar"
@@ -48,7 +47,7 @@ const VerifyLogin = (props) => {
         )}
         {showLogin && <Login></Login>}
         {showSignUp && <SignUp></SignUp>}
-      </div>
+      </DivDisplay>
     );
   }
 };

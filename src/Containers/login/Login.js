@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Login.css";
+import { LoginStyle } from "../../styles";
 
 import axios from "axios";
 import Input from "../../Components/Input/Input";
@@ -28,7 +28,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="login">
+    <LoginStyle>
       <Input
         hint="Digite seu email..."
         type="email"
@@ -42,7 +42,7 @@ const Login = (props) => {
         onChange={(e) => setUser({ ...user, password: e.target.value })}
       ></Input>
       <Input type="submit" value="Acessar" onClick={efetuarLogin}></Input>
-    </div>
+    </LoginStyle>
   );
 };
 

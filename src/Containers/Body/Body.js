@@ -1,22 +1,23 @@
 import React from "react";
 
-import "./Body.css";
+import { DivContainer, DivDisplayFixed, DivDisplayDynamic } from "../../styles";
+
 import GlobalRequest from "../../data/GlobalRequest/GlobalRequest";
 import CountryRequest from "../../data/CountryRequest/CountryRequest";
 
 const Body = (props) => {
   return (
-    <div {...props} className="container">
-      <div className="center">
-        <div className="fixInfo">
+    <DivContainer {...props}>
+      <div>
+        <DivDisplayFixed>
           <GlobalRequest></GlobalRequest>
           <CountryRequest searchType="static"></CountryRequest>
-        </div>
-        <div className="dynamicInfo">
+        </DivDisplayFixed>
+        <DivDisplayDynamic>
           <CountryRequest searchType="dynamic"></CountryRequest>
-        </div>
+        </DivDisplayDynamic>
       </div>
-    </div>
+    </DivContainer>
   );
 };
 

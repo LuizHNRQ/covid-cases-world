@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Header from "../../Containers/Header/header";
 import Body from "../../Containers/Body/Body";
@@ -7,18 +7,27 @@ import "./initial.css";
 
 const Initial = () => {
   //verify if the user is logged
-  let isLogged = false;
-  if (localStorage.getItem("@covid19/token") !== null) {
-    isLogged = true;
-  }
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("@covid19/token") !== null) {
+      setLogged(true);
+    }
+  }, []);
+
+  const allowClick = () => {
+    if (logged === false) {
+      alert("Por favor, faça o login antes de Continuar");
+    }
+  };
 
   //output in console
-  console.log("ta logado? ->", isLogged);
+  console.log("ta logado? ->", logged);
 
   return (
-    <div className="background">
-      <Header isLogged={isLogged}></Header>
-      <Body></Body>
+    <div>
+      <Header isLogged={logged}></Header>
+      <Body onClick={allowClick}></Body>
     </div>
   );
 };

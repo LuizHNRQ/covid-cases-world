@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import "../../data/DataDisplay.css";
+import { Display, DataGreen, DataRed } from "../../styles";
 import Input from "../../Components/Input/Input";
 import Button from "../../Components/Button/Button";
 
@@ -47,19 +47,26 @@ const CountryRequest = (props) => {
   };
 
   useEffect(() => {
-    request("brazil"); //eslint-disable-next-line
+    request("brazil");
+    //eslint-disable-next-line
   }, []);
 
   switch (props.searchType) {
     case "static":
       return (
         <div>
-          <div className="caseDisplay">
+          <Display>
             <p>Casos do Brasil</p>
             <p>Casos Confirmados: {dataTotal.totalConfirm}</p>
-            <p>Pacientes Recuperados: {dataTotal.totalRecover}</p>
-            <p>Mortes: {dataTotal.totalDeath}</p>
-          </div>
+            <p>
+              <DataGreen>Pacientes Recuperados: </DataGreen>
+              {dataTotal.totalRecover}
+            </p>
+            <p>
+              <DataRed>Mortes: </DataRed>
+              {dataTotal.totalDeath}
+            </p>
+          </Display>
         </div>
       );
 
@@ -67,19 +74,24 @@ const CountryRequest = (props) => {
       return (
         <div>
           {showResult && (
-            <div className="caseDisplay">
+            <Display>
               <p>Casos {country}</p>
               <p>Casos Confirmados: {dataTotal.totalConfirm}</p>
-              <p>Pacientes Recuperados: {dataTotal.totalRecover}</p>
-              <p>Mortes: {dataTotal.totalDeath}</p>
-            </div>
+              <p>
+                <DataGreen>Pacientes Recuperados: </DataGreen>
+                {dataTotal.totalRecover}
+              </p>
+              <p>
+                <DataRed>Mortes: </DataRed>
+                {dataTotal.totalDeath}
+              </p>
+            </Display>
           )}
 
           <div className="search">
             <Input
               hint="Pesquisa por País..."
               type="text"
-              label="País"
               onChange={(e) => setCountry(e.target.value)}
             ></Input>
             <Button

@@ -1,16 +1,16 @@
 import React from "react";
-import "./Input.css";
+import { InputCustom, LabelStyle } from "../../styles";
+
 const Input = (props) => {
   return (
-    <label className="labelStyle">
+    <LabelStyle>
       {props.label}
-      <input
+      <InputCustom
         {...props}
-        className="inputStyle"
         placeholder={props.hint}
         type={props.type}
-      ></input>
-    </label>
+      ></InputCustom>
+    </LabelStyle>
   );
 };
 export default Input;

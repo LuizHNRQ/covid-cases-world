@@ -1,17 +1,16 @@
 import React from "react";
 
-import "./header.css";
-
-import DisplayComponents from "../../Components/VerifyLogin/VerifyLogin";
+import { HeaderCustom } from "../../styles";
+import VerifyLogin from "../../Components/VerifyLogin/VerifyLogin";
 
 const Header = (props) => {
   return (
-    <div className="header">
-      <div className="text">Casos de Covid 19 no Mundo</div>
+    <HeaderCustom>
+      <h1>Casos de Covid 19 no Mundo</h1>
       <div>
-        <DisplayComponents logged={props.isLogged}></DisplayComponents>
+        <VerifyLogin logged={props.isLogged}></VerifyLogin>
       </div>
-    </div>
+    </HeaderCustom>
   );
 };
 

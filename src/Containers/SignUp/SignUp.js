@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./SignUp.css";
 
+import { SignUpStyle } from "../../styles";
 import Input from "../../Components/Input/Input";
 
 const SignUp = () => {
@@ -25,7 +25,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup">
+    <SignUpStyle>
       <Input
         hint="Digite seu email..."
         type="email"
@@ -45,7 +45,7 @@ const SignUp = () => {
         onChange={(e) => setUser({ ...user, passwordConfirm: e.target.value })}
       ></Input>
       <Input type="submit" value="Cadastrar" onClick={efetuarCadastro}></Input>
-    </div>
+    </SignUpStyle>
   );
 };
 
