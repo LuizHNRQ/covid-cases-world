@@ -20,8 +20,28 @@ const SignUp = () => {
         }
       })
       .catch(function (error) {
-        console.log(error);
+        if (user.email.length > 3 && user.password.length > 3) {
+          alert("Email ou Senha invalidos");
+        }
       });
+  };
+
+  const checkData = () => {
+    if (user.email === "" && user.password === "") {
+      alert("Campo Email e Senha não podem ser vazios");
+    } else if (user.email === "") {
+      alert("Campo Email não pode ser vazio");
+    } else if (user.password === "") {
+      alert("Campo Senha não pode ser vazio");
+    } else if (user.email.length <= 3) {
+      alert("Campo Email não pode ser menor que 4 caracteres");
+    } else if (user.password <= 3) {
+      alert("Campo Senha não pode ser menor que 4 caracteres");
+    }
+
+    if (user.password !== user.passwordConfirm) {
+      alert("As senhas não são identicas!");
+    }
   };
 
   return (
@@ -44,7 +64,14 @@ const SignUp = () => {
         label="Senha"
         onChange={(e) => setUser({ ...user, passwordConfirm: e.target.value })}
       ></Input>
-      <Input type="submit" value="Cadastrar" onClick={efetuarCadastro}></Input>
+      <Input
+        type="submit"
+        value="Cadastrar"
+        onClick={() => {
+          efetuarCadastro();
+          checkData();
+        }}
+      ></Input>
     </SignUpStyle>
   );
 };

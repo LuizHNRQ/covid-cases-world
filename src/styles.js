@@ -7,14 +7,13 @@ export const InputCustom = styled.input`
   font-size: 18px;
   border: 1px solid gray;
   margin: 5px;
-  width: 100%;
 `;
 
 export const LabelStyle = styled.label`
   font-size: 26px;
   color: white;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 `;
 
@@ -38,6 +37,7 @@ export const HeaderCustom = styled.div`
 //VerifyLogin.js page
 export const DivDisplay = styled.div`
   text-align: center;
+  padding: 20px;
 `;
 export const DivLogout = styled.div`
   display: flex;

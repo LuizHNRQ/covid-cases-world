@@ -14,10 +14,6 @@ const CountryRequest = (props) => {
   });
   const [showResult, setShowResult] = useState(false);
 
-  const search = () => {
-    setShowResult(true);
-  };
-
   let today = new Date();
   let yesterday = new Date();
   today.setDate(today.getDate() - 1);
@@ -32,16 +28,19 @@ const CountryRequest = (props) => {
         `https://api.covid19api.com/country/${country}?from=${yesterday}T00:00:00Z&to=${today}T00:00:00Z`
       )
       .then((res) => {
-        const r = res.data[0];
-        console.log(r);
-        setDataTotal({
-          totalConfirm: r.Confirmed,
-          totalRecover: r.Recovered,
-          totalDeath: r.Deaths,
-        });
+        if (res.status === 200) {
+          const r = res.data[0];
+          setDataTotal({
+            totalConfirm: r.Confirmed,
+            totalRecover: r.Recovered,
+            totalDeath: r.Deaths,
+          });
+          console.log("stat->", res.status);
+        }
       })
       .catch(function (error) {
-        console.log(error);
+        setShowResult(false);
+        alert("País Invalido");
       });
     // <-- empty dependency array
   };
@@ -98,8 +97,17 @@ const CountryRequest = (props) => {
               typebtn="btnGrey"
               text="Pesquisar"
               onClick={() => {
-                request(country);
-                search();
+                if (country === "") {
+                  alert("O campo não pode ser Vazio!");
+                  setShowResult(false);
+                  return;
+                } else if (country.length <= 3) {
+                  alert("Por Favor digite um mais com mais de 3 Caracteres!");
+                  setShowResult(false);
+                } else {
+                  request(country);
+                  setShowResult(true);
+                }
               }}
             />
           </div>
