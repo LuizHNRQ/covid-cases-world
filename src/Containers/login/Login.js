@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Swal from "sweetalert2";
 import { LoginStyle } from "../../styles";
 
 import axios from "axios";
@@ -24,21 +24,51 @@ const Login = (props) => {
       })
       .catch(function (error) {
         if (user.email.length > 3 && user.password.length > 3) {
-          alert("Email ou Senha invalidos");
+          Swal.fire({
+            title: "Usuário Invalido",
+            text: "Email ou Senha invalidos",
+            icon: "error",
+            confirmButtonText: "Ok",
+          });
         }
       });
   };
   const checkData = () => {
     if (user.email === "" && user.password === "") {
-      alert("Campo Email e Senha não podem ser vazios");
+      Swal.fire({
+        title: "Campos Invalidos",
+        text: "Campo Email e Senha não podem ser vazios",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     } else if (user.email === "") {
-      alert("Campo Email não pode ser vazio");
+      Swal.fire({
+        title: "Email Invalido",
+        text: "Campo Email não pode ser vazio",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     } else if (user.password === "") {
-      alert("Campo Senha não pode ser vazio");
+      Swal.fire({
+        title: "Senha Invalido",
+        text: "Campo Senha não pode ser vazio",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     } else if (user.email.length <= 3) {
-      alert("Campo Email não pode ser menor que 4 caracteres");
+      Swal.fire({
+        title: "Email Invalido",
+        text: "Campo Email não pode ser menor que 4 caracteres",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     } else if (user.password <= 3) {
-      alert("Campo Senha não pode ser menor que 4 caracteres");
+      Swal.fire({
+        title: "Senha Invalido",
+        text: "Campo Senha não pode ser menor que 4 caracteres",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     }
   };
 

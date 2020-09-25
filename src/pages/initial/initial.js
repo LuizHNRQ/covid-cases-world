@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 import Header from "../../Containers/Header/header";
 import Body from "../../Containers/Body/Body";
@@ -17,7 +18,12 @@ const Initial = () => {
 
   const allowClick = () => {
     if (logged === false) {
-      alert("Por favor, faça o login antes de Continuar");
+      Swal.fire({
+        title: "Usuário não está logado",
+        text: "Por favor, faça o login antes de Continuar",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     }
   };
 
@@ -27,7 +33,7 @@ const Initial = () => {
   return (
     <div>
       <Header isLogged={logged}></Header>
-      <Body onClick={allowClick}></Body>
+      <Body onClick={allowClick} isLogged={logged}></Body>
     </div>
   );
 };

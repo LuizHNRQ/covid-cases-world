@@ -14,7 +14,10 @@ const Body = (props) => {
           <CountryRequest searchType="static"></CountryRequest>
         </DivDisplayFixed>
         <DivDisplayDynamic>
-          <CountryRequest searchType="dynamic"></CountryRequest>
+          <CountryRequest
+            searchType="dynamic"
+            isLogged={props.isLogged}
+          ></CountryRequest>
         </DivDisplayDynamic>
       </div>
     </DivContainer>

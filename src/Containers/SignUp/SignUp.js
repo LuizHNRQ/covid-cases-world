@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 import axios from "axios";
 
 import { SignUpStyle } from "../../styles";
@@ -28,19 +29,40 @@ const SignUp = () => {
 
   const checkData = () => {
     if (user.email === "" && user.password === "") {
-      alert("Campo Email e Senha não podem ser vazios");
+      Swal.fire({
+        title: "Campos Invalidos",
+        text: "Campo Email e Senha não podem ser vazios",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     } else if (user.email === "") {
-      alert("Campo Email não pode ser vazio");
+      Swal.fire({
+        title: "Email Invalido",
+        text: "Campo Email não pode ser vazio",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     } else if (user.password === "") {
-      alert("Campo Senha não pode ser vazio");
+      Swal.fire({
+        title: "Senha Invalido",
+        text: "Campo Senha não pode ser vazio",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     } else if (user.email.length <= 3) {
-      alert("Campo Email não pode ser menor que 4 caracteres");
+      Swal.fire({
+        title: "Email Invalido",
+        text: "Campo Email não pode ser menor que 4 caracteres",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     } else if (user.password <= 3) {
-      alert("Campo Senha não pode ser menor que 4 caracteres");
-    }
-
-    if (user.password !== user.passwordConfirm) {
-      alert("As senhas não são identicas!");
+      Swal.fire({
+        title: "Senha Invalido",
+        text: "Campo Senha não pode ser menor que 4 caracteres",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     }
   };
 
