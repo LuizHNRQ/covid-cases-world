@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
-import { Display, DataGreen, DataRed } from "../../styles";
-import Input from "../../Components/Input/Input";
-import Button from "../../Components/Button/Button";
+import { Display, DataGreen, DataRed } from '../../styles'
+import Input from '../../Components/Input/Input'
+import Button from '../../Components/Button/Button'
 
 const CountryRequest = (props) => {
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState('')
   const [dataTotal, setDataTotal] = useState({
-    totalConfirm: "",
-    totalRecover: "",
-    totalDeath: "",
-  });
-  const [showResult, setShowResult] = useState(false);
+    totalConfirm: '',
+    totalRecover: '',
+    totalDeath: '',
+  })
+  const [showResult, setShowResult] = useState(false)
 
-  const isLogged = props.isLogged;
+  const isLogged = props.isLogged
 
-  let today = new Date();
-  let yesterday = new Date();
-  today.setDate(today.getDate() - 1);
-  yesterday.setDate(yesterday.getDate() - 2);
+  let today = new Date()
+  let yesterday = new Date()
+  today.setDate(today.getDate() - 1)
+  yesterday.setDate(yesterday.getDate() - 2)
 
-  today = today.toISOString().slice(0, 10);
-  yesterday = yesterday.toISOString().slice(0, 10);
+  today = today.toISOString().slice(0, 10)
+  yesterday = yesterday.toISOString().slice(0, 10)
 
   const request = async (country) => {
     await axios
@@ -32,34 +32,34 @@ const CountryRequest = (props) => {
       )
       .then((res) => {
         if (res.status === 200) {
-          const r = res.data[0];
+          const r = res.data[0]
           setDataTotal({
             totalConfirm: r.Confirmed,
             totalRecover: r.Recovered,
             totalDeath: r.Deaths,
-          });
-          console.log("stat->", res.status);
+          })
+          console.log('stat->', res.status)
         }
       })
       .catch(function (error) {
-        setShowResult(false);
+        setShowResult(false)
         Swal.fire({
-          title: "País Invalido",
-          text: "Digite um país Válido",
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-      });
+          title: 'País Invalido',
+          text: 'Digite um país Válido',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        })
+      })
     // <-- empty dependency array
-  };
+  }
 
   useEffect(() => {
-    request("brazil");
+    request('brazil')
     //eslint-disable-next-line
-  }, []);
+  }, [])
 
   switch (props.searchType) {
-    case "static":
+    case 'static':
       return (
         <div>
           <Display>
@@ -75,9 +75,9 @@ const CountryRequest = (props) => {
             </p>
           </Display>
         </div>
-      );
+      )
 
-    case "dynamic":
+    case 'dynamic':
       if (isLogged) {
         return (
           <div>
@@ -96,50 +96,50 @@ const CountryRequest = (props) => {
               </Display>
             )}
 
-            <div className="search">
+            <div className='search'>
               <Input
-                hint="Pesquisa por País..."
-                type="text"
+                hint='Pesquisa por País...'
+                type='text'
                 onChange={(e) => setCountry(e.target.value)}
               ></Input>
               <Button
-                typebtn="btnGrey"
-                text="Pesquisar"
+                typebtn='btnGrey'
+                text='Pesquisar'
                 onClick={() => {
-                  if (country === "") {
-                    setShowResult(false);
+                  if (country === '') {
+                    setShowResult(false)
                     Swal.fire({
-                      title: "Vazio!",
-                      text: "O campo não pode ser vazio",
-                      icon: "error",
-                      confirmButtonText: "Ok",
-                    });
+                      title: 'Vazio!',
+                      text: 'O campo não pode ser vazio',
+                      icon: 'error',
+                      confirmButtonText: 'Ok',
+                    })
 
-                    return;
+                    return
                   } else if (country.length <= 3) {
                     Swal.fire({
-                      title: "País Invalido!",
-                      text: "Digite um país com mais de 3 caracteres",
-                      icon: "error",
-                      confirmButtonText: "Ok",
-                    });
-                    setShowResult(false);
+                      title: 'País Invalido!',
+                      text: 'Digite um país com mais de 3 caracteres',
+                      icon: 'error',
+                      confirmButtonText: 'Ok',
+                    })
+                    setShowResult(false)
                   } else {
-                    request(country);
-                    setShowResult(true);
+                    request(country)
+                    setShowResult(true)
                   }
                 }}
               />
             </div>
           </div>
-        );
+        )
       } else {
-        return <></>;
+        return <></>
       }
 
     default:
-      return <></>;
+      return <></>
   }
-};
+}
 
-export default CountryRequest;
+export default CountryRequest

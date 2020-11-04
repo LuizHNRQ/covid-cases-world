@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 //Input.js page
 export const InputCustom = styled.input`
@@ -7,7 +7,7 @@ export const InputCustom = styled.input`
   font-size: 18px;
   border: 1px solid gray;
   margin: 5px;
-`;
+`
 
 export const LabelStyle = styled.label`
   font-size: 26px;
@@ -15,7 +15,7 @@ export const LabelStyle = styled.label`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
+`
 
 //Header.js page
 export const HeaderCustom = styled.div`
@@ -32,17 +32,17 @@ export const HeaderCustom = styled.div`
     color: white;
     font-weight: 600;
   }
-`;
+`
 
 //VerifyLogin.js page
 export const DivDisplay = styled.div`
   text-align: center;
   padding: 20px;
-`;
+`
 export const DivLogout = styled.div`
   display: flex;
   justify-content: flex-end;
-`;
+`
 
 //Body.js page
 export const DivContainer = styled.div`
@@ -50,16 +50,16 @@ export const DivContainer = styled.div`
   justify-content: center;
   /* background-color: rgb(130, 140, 155); */
   background-color: rgb(198, 188, 230);
-`;
+`
 export const DivDisplayFixed = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-`;
+`
 export const DivDisplayDynamic = styled.div`
   display: flex;
   justify-content: center;
-`;
+`
 
 //SignUp.js page
 export const SignUpStyle = styled.div`
@@ -70,7 +70,8 @@ export const SignUpStyle = styled.div`
   padding: 10px;
   margin-left: 20px;
   border-radius: 5px;
-`;
+  z-index: 999;
+`
 
 //Login.js page
 export const LoginStyle = styled.div`
@@ -82,7 +83,7 @@ export const LoginStyle = styled.div`
   padding: 10px;
   margin-left: 20px;
   border-radius: 5px;
-`;
+`
 
 //--- DATA DISPLAY ---
 export const Display = styled.div`
@@ -102,11 +103,30 @@ export const Display = styled.div`
     font-size: 22px;
     padding-bottom: 5px;
   }
-`;
+`
 
 export const DataGreen = styled.span`
   color: green;
-`;
+`
 export const DataRed = styled.span`
   color: red;
-`;
+`
+
+export const DivInfo = styled.div`
+  background-color: rgb(55, 55, 117);
+  width: 400px;
+  height: 500px;
+  overflow-y: scroll;
+  padding: 20px;
+`
+export const DivInsertMessage = styled.div`
+  background-color: rgb(55, 55, 117);
+  padding-bottom: 20px;
+  border-bottom: 2px solid white;
+`
+export const DisplayTitle = styled.h2`
+  color: white;
+`
+export const DisplayContent = styled.p`
+  color: #ada8a8;
+`
